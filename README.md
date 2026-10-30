@@ -86,6 +86,6 @@ BS in Computer Science and BS in Computer Engineering (double major). Dean's Lis
 
 ## 📊 Stats
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=Saffsanity&show_icons=true&include_all_commits=true&count_private=true&theme=algolia)
-
-![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Saffsanity&theme=algolia&layout=compact)
+![GitHub stats](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Saffsanity&theme=tokyonight)
+![Repos per language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Saffsanity&theme=tokyonight)
+![Most commit language](https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Saffsanity&theme=tokyonight)
