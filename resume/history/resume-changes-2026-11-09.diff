@@ -1,0 +1,14 @@
+--- NoahSafferResume_2026-11-09.tex	2026-11-09 00:35:33
++++ NoahSafferResume.tex	2026-11-09 01:10:23
+@@ -151,8 +151,9 @@
+ \location{September 2026 - Present | getsill.app | github.com/Saffsanity/sill}
+ \begin{tightitemize}
+ \item Designed and shipped a free, open-source (Apache 2.0) app that streams any window from a Mac to iPhone and iPad, with touch, trackpad, keyboard and Apple Pencil input and iPhone Duo layouts: Swift on macOS and iOS, ScreenCaptureKit capture, hardware HEVC encoding, TLS-paired local and remote transport, no servers and no accounts
+-\item Launch: \#1 Mac Streaming app on the App Store (5.0 stars, 40 reviews), \#2 on Hacker News, 672K-view launch video, 25K+ iOS users and 25K+ Mac downloads
+-\item 4,100+ GitHub stars and 34 community contributors submitting new features, ideas, bug fixes; Android, Windows, Linux and visionOS clients. CI and mutation-tested checks on every pull request, tag-triggered releases, TestFlight and App Store uploads from the command line
++\item Launch: \#1 Mac Streaming app on the App Store and \#2 on Hacker News
++\item 4.9 stars on the App Store (57 reviews), 827K channel views, 33K+ iOS users and 35K+ Mac downloads
++\item 4,700+ GitHub stars and 39 community contributors submitting new features, ideas, bug fixes; Android, Windows, Linux and visionOS clients. CI and mutation-tested checks on every pull request, tag-triggered releases, TestFlight and App Store uploads from the command line
+ \item Built end to end utilizing Claude Code, from the first encoder latency harness to video production and App Store review
+ \end{tightitemize}
+ \vspace{\topsep}

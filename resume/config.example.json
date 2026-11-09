@@ -1,0 +1,7 @@
+{
+  "asc_key_id": "YOUR_APP_STORE_CONNECT_KEY_ID",
+  "asc_issuer_id": "YOUR_APP_STORE_CONNECT_ISSUER_ID",
+  "asc_vendor_number": "YOUR_SALES_VENDOR_NUMBER",
+  "asc_key_file": "appstoreconnectapikey.p8",
+  "youtube_key_file": "youtubedataapikey.txt"
+}

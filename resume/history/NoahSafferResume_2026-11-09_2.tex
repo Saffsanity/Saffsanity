@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper]{deedy-resume} % Use US Letter paper, change to a4paper for A4
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\namesection{Noah}{Saffer}{ % Your name
+(973) 220-2114 | 199 Bowery Apt 2D, New York, NY 10002
+% Your contact information
+}
+
+%----------------------------------------------------------------------------------------
+%	LEFT COLUMN
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.33\textwidth} % The left column takes up 33% of the text width of the page
+
+%------------------------------------------------
+% Education
+%------------------------------------------------
+
+\section{Education}
+
+\subsection{Washington University}
+\subsection{in St. Louis}
+
+\vspace{\topsep}
+
+\textbf {College of Engineering \\
+Dean's List \\
+Cumulative GPA of 3.4}
+
+\vspace{\topsep}
+
+\descript{Double Major}
+
+\descript{BS in Computer Science}
+\location{May 2020 | St. Louis, MO}
+
+\sectionspace
+
+\descript{BS in Computer Engineering}
+\location{May 2020 | St. Louis, MO}
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Links
+%------------------------------------------------
+
+\section{Links}
+
+Email:// \href{mailto:noah@saffer.me}{\bf noah@saffer.me} \\
+LinkedIn:// \href{https://www.linkedin.com/in/noahsaffer}{\bf noahsaffer} \\
+GitHub:// \href{https://github.com/Saffsanity}{\bf Saffsanity} \\
+Sill:// \href{https://getsill.app}{\bf getsill.app}
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Skills
+%------------------------------------------------
+
+\section{Skills}
+
+\subsection{Programming}
+
+\location{Proficient:}
+
+Python \textbullet{} Java \textbullet{} Swift \\
+
+\location{Significant Familiarity:}
+
+C++ \textbullet{} Bash \textbullet{} C \textbullet{}  HTML \textbullet{} CSS \textbullet{} XML \\
+
+\location{Slight Familiarity:}
+
+Assembly \textbullet{} C\# \textbullet{} Javascript \textbullet{} Spark \textbullet{} Hive \textbullet{} Pig
+
+\vspace{10 pt}
+
+\subsection{Apple Platforms}
+ScreenCaptureKit \textbullet{} VideoToolbox (HEVC) \textbullet{} Network.framework \textbullet{} CryptoKit \textbullet{} SwiftUI \textbullet{} UIKit \textbullet{} AppKit \textbullet{} TestFlight
+
+\vspace{10 pt}
+
+\subsection{Infrastructure and Tools}
+Azure Blob Storage \textbullet{} Azure DevOps \textbullet{} Azure Virtual Networks \textbullet{} Amazon Web Services \textbullet{} Azure Virtual Machines \textbullet{} Azure Cloud Pools \textbullet{} GitHub Actions \textbullet{} Claude Code
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Hardware
+%------------------------------------------------
+
+\section{Hardware}
+\vspace{\topsep}
+\begin{tightitemize}
+\item 32-bit microprogrammed RISC CPU on an FPGA, extended on my own time (VHDL, Verilog)
+\item Bluetooth-to-VGA adapter on an FPGA, driven from a mobile app (VHDL, ExpressPCB)
+\end{tightitemize}
+
+\vspace{8 pt}
+
+\subsection{MADE IN \LaTeX}
+
+%----------------------------------------------------------------------------------------
+
+\end{minipage} % The end of the left column
+\hfill
+%
+%----------------------------------------------------------------------------------------
+%	RIGHT COLUMN
+%----------------------------------------------------------------------------------------
+%
+\begin{minipage}[t]{0.66\textwidth} % The right column takes up 66% of the text width of the page
+
+%------------------------------------------------
+% Experience
+%------------------------------------------------
+
+\section{Experience}
+
+\runsubsection{Microsoft Corp.}
+\descript{| Senior Software Engineer}
+
+\location{Summer 2019 - Present | New York, NY}
+\vspace{\topsep}
+
+\begin{tightitemize}
+
+\item Developed infrastructure architecture used in silicon manufacturing production on all generations of Maia and Cobalt 1P products to assist with chip test by designing systems leveraging Azure cloud technology
+\item Created Azure DevOps integrated CI/CD workflows with multiple build validation pipelines using Azure cloud pools, version control documentation and standards (PRs) for multiple engineering teams totaling over 100 members
+\item Generated and operated on many terabytes of data across different data centers and local sites in the US, Malaysia, South Korea, Taiwan and more
+\item Designed custom Microsoft file format for manufacturing data transport and data transfer systems in collaboration with semiconductor fabrication manufacturing partners
+\item Designed and developed infrastructure and spec to take Design Verification outputs and create Automated Test Equipment (Advantest 93K) compatible binary pattern files along with custom operating sequence generator
+\item Worked with organization verticals to enable infrastructure that takes manufacturing data and binning information and creates die fusing recipe for 1P products
+\item Worked in lab to identify Vmin on Xbox Series X CPU and GPU
+\end{tightitemize}
+\vspace{\topsep}
+
+\runsubsection{Sill}
+\descript{| Creator and Maintainer}
+
+\location{September 2026 - Present | getsill.app | github.com/Saffsanity/sill}
+\begin{tightitemize}
+\item Designed and shipped a free, open-source (Apache 2.0) app that streams any window from a Mac to iPhone and iPad, with touch, trackpad, keyboard and Apple Pencil input and iPhone Duo layouts: Swift on macOS and iOS, ScreenCaptureKit capture, hardware HEVC encoding, TLS-paired local and remote transport, no servers and no accounts
+\item Launch: \#1 Mac Streaming app on the App Store and \#2 on Hacker News
+\item 4.9 stars on the App Store (57 reviews), 827K channel views, 33K+ iOS users and 35K+ Mac downloads
+\item 4,700+ GitHub stars and 39 community contributors submitting new features, ideas, bug fixes; Android, Windows, Linux and visionOS clients. CI and mutation-tested checks on every pull request, tag-triggered releases, TestFlight and App Store uploads from the command line
+\item Built end to end utilizing Claude Code, from the first encoder latency harness to video production and App Store review
+\end{tightitemize}
+\vspace{\topsep}
+
+\runsubsection{Amazon.com, Inc.}
+\descript{| Software Development Engineer Intern}
+
+\location{Summer 2018 | Seattle, WA}
+\begin{tightitemize}
+\item Twelve week internship in which I created and deployed software to production for Amazon Prime Video with one downstream consumer in production.
+\item Created a directed acyclic graph to perform a pipelined workflow for Live Video and Just After Broadcast data. Furthermore, I helped the artwork team with their workflow by pioneering the live events workflow described above.
+\item Gave input on the high-level design of Prime Video's live events architecture within the Code Design Review (CDR) and Project Design Review (PDR) processes and defined in-production POJOs, abstract classes and interfaces.
+\end{tightitemize}
+
+\end{minipage} % The end of the right column
+
+\end{document}

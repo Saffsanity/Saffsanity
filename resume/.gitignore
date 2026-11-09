@@ -1,0 +1,16 @@
+# Credentials and private IDs: never commit
+*.p8
+*.p8.bak
+*.p12
+youtubedataapikey.txt
+config.local.json
+
+# Cached App Store sales reports (private sales data)
+.cache/
+
+# Build output: the published PDF and QR code live at the repo root
+NoahSafferResume.pdf
+Saffer Resume.pdf
+Saffer Resume QR.*
+
+.DS_Store
