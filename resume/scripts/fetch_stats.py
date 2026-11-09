@@ -90,14 +90,15 @@ def youtube_views(api_key):
         token = page.get("nextPageToken")
         if not token:
             break
-    total = 0
+    views = likes = 0
     for i in range(0, len(ids), 50):
         _, body = curl(f"{base}/videos?" + q({"part": "statistics",
                                               "id": ",".join(ids[i:i + 50]),
                                               "key": api_key}))
-        total += sum(int(v["statistics"].get("viewCount", 0))
-                     for v in json.loads(body)["items"])
-    return {"youtube_views": total, "youtube_videos": len(ids)}
+        for v in json.loads(body)["items"]:
+            views += int(v["statistics"].get("viewCount", 0))
+            likes += int(v["statistics"].get("likeCount", 0))  # missing if likes are hidden
+    return {"youtube_views": views, "youtube_likes": likes, "youtube_videos": len(ids)}
 
 
 # ---------------------------------------------------------------- App Store Connect
@@ -158,6 +159,7 @@ def display(s):
         "rating": f"{math.floor(s['rating'] * 10) / 10:.1f} stars",
         "reviews": f"{s['reviews']} reviews",
         "youtube_views": f"{s['youtube_views'] // 1000}K",
+        "youtube_likes": f"{s['youtube_likes'] // 1000}K likes",
     }
     if "ios_users" in s:
         d["ios_users"] = f"{s['ios_users'] // 1000}K+"

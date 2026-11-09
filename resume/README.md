@@ -21,6 +21,7 @@ LaTeX source for [`Saffer Resume.pdf`](../Saffer%20Resume.pdf), plus the scripts
 |---|---|---|
 | App Store stars and reviews | iTunes Lookup API | US storefront average, rounded down to one decimal |
 | Channel views | YouTube Data API | Views summed across every video on the Sill channel |
+| Likes | YouTube Data API | Likes summed across every video on the Sill channel, shown as "(18K likes)" after channel views |
 | iOS users | App Store Connect sales reports | First-time downloads (type 1F) on iPhone and iPad since launch |
 | Mac downloads | GitHub releases | `.dmg` + `.zip` downloads on stable `v*` releases |
 | GitHub stars | GitHub API | Stars on `Saffsanity/sill` |
