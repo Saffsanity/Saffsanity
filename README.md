@@ -17,7 +17,7 @@ Senior Software Engineer in New York, NY. By day I build the cloud infrastructur
 
 - Swift on macOS and iOS: ScreenCaptureKit capture, hardware HEVC encoding, TLS-paired local and remote transport, iPhone Duo layouts.
 - Launched as the #1 Mac Streaming app on the App Store and #2 on Hacker News.
-- 4.9 stars on the App Store (75 reviews), 866K channel views (18K likes), 37K+ iOS users and 43K+ Mac downloads.
+- 4.9 stars on the App Store (76 reviews), 868K channel views (18K likes), 38K+ iOS users and 45K+ Mac downloads.
 - Community contributors have submitted Android, Windows, Linux and visionOS clients. Every pull request runs CI and mutation-tested checks; releases are tag-triggered, with TestFlight and App Store uploads from the command line.
 - Built end to end with Claude Code: custom skills, workflows, MCP servers and artifacts for development, marketing, video and design. AI for iteration and prototyping, every architecture and product decision my own.
 
