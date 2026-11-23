@@ -22,7 +22,8 @@ case "${1:-}" in
   diff)
     mkdir -p history
     base=$(basename "${2:?usage: build.sh diff BACKUP.tex}" .tex)
-    out="history/resume-changes-${base#NoahSafferResume_}.diff"
+    out="history/resume-changes-${base#NoahSafferResume_}.diff"; n=2
+    while [ -e "$out" ]; do out="history/resume-changes-${base#NoahSafferResume_}_$n.diff"; n=$((n + 1)); done
     diff -u "$2" "$TEX" > "$out" || true
     echo "$out"
     ;;
