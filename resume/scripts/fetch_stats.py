@@ -29,10 +29,12 @@ YOUTUBE_CHANNEL_ID = "UC53v6R2VJhB1AbQgCx4adQg"
 LAUNCH_DATE = dt.date(2026, 10, 9)  # first day with App Store sales
 
 
-def curl(url, headers=None, binary=False):
-    cmd = ["curl", "-s", "-w", "\n%{http_code}", url]
+def curl(url, headers=None, binary=False, compressed=False):
+    cmd = ["curl", "-s", "--max-time", "60", "-w", "\n%{http_code}", url]
     for k, v in (headers or {}).items():
         cmd[1:1] = ["-H", f"{k}: {v}"]
+    if compressed:  # some storefronts send gzip whether or not it was asked for
+        cmd.insert(1, "--compressed")
     raw = subprocess.run(cmd, capture_output=True, check=True).stdout
     body, _, code = raw.rpartition(b"\n")
     return int(code), (body if binary else body.decode())
@@ -65,10 +67,52 @@ def github_stats():
 
 # ---------------------------------------------------------------- App Store rating
 
-def itunes_rating():
-    code, body = curl(f"https://itunes.apple.com/lookup?id={APP_STORE_APP_ID}&country=us")
-    r = json.loads(body)["results"][0]
-    return {"rating": r["averageUserRating"], "reviews": r["userRatingCount"]}
+def storefronts(token):
+    """Two-letter codes for every App Store territory, from App Store Connect.
+
+    ASC lists territories as ISO alpha-3; the iTunes Lookup API wants alpha-2,
+    so map them with macOS's ICU library.
+    """
+    import ctypes
+    icu = ctypes.CDLL("/usr/lib/libicucore.dylib")
+    iso3 = icu.uloc_getISO3Country
+    iso3.restype, iso3.argtypes = ctypes.c_char_p, [ctypes.c_char_p]
+    alpha2 = {}
+    for a in (chr(x) + chr(y) for x in range(65, 91) for y in range(65, 91)):
+        alpha2.setdefault(iso3(f"en_{a}".encode()).decode(), a)
+    alpha2["XKS"] = "XK"  # Kosovo isn't in ICU's table
+    code, body = curl("https://api.appstoreconnect.apple.com/v1/territories?limit=200",
+                      {"Authorization": f"Bearer {token}"})
+    if code != 200:
+        raise RuntimeError(f"territories: HTTP {code}")
+    terrs = [t["id"] for t in json.loads(body)["data"]]
+    missing = [t for t in terrs if t not in alpha2]
+    if missing:
+        raise RuntimeError(f"no alpha-2 code for territories {missing}")
+    return sorted(alpha2[t] for t in terrs)
+
+
+def itunes_rating(token):
+    """Worldwide rating count and average: iTunes Lookup summed over every storefront.
+
+    Each storefront only reports its own ratings, so the count is the sum and the
+    average is weighted by each storefront's count.
+    """
+    total = weighted = 0
+    for c in storefronts(token):
+        url = f"https://itunes.apple.com/lookup?id={APP_STORE_APP_ID}&country={c.lower()}"
+        for _ in range(3):
+            code, body = curl(url, compressed=True)
+            if code == 200:
+                break
+        if code != 200:
+            raise RuntimeError(f"iTunes lookup {c}: HTTP {code}")
+        results = json.loads(body)["results"]
+        n = results[0].get("userRatingCount", 0) if results else 0
+        if n:
+            total += n
+            weighted += n * results[0]["averageUserRating"]
+    return {"rating": weighted / total, "reviews": total}
 
 
 # ---------------------------------------------------------------- YouTube
@@ -150,14 +194,23 @@ def floor_to(n, step):
     return n // step * step
 
 
+def floor_sig(x, sig=3):
+    """Round down to `sig` significant figures (4.9249 -> 4.92, 1234 -> 1230)."""
+    if x <= 0:
+        return x
+    step = 10 ** (math.floor(math.log10(x)) - sig + 1)
+    return math.floor(x / step + 1e-9) * step
+
+
 def display(s):
     """Resume-style values. Rounds down so the resume never overstates."""
     d = {
         "stars": f"{floor_to(s['stars'], 100):,}+",
         "contributors": str(s["contributors"]),
         "mac_downloads": f"{s['mac_downloads'] // 1000}K+",
-        "rating": f"{math.floor(s['rating'] * 10) / 10:.1f} stars",
-        "reviews": f"{s['reviews']} reviews",
+        "rating": f"{floor_sig(s['rating']):.2f} stars",
+        "reviews": (f"{s['reviews']} reviews" if s["reviews"] < 1000
+                    else f"{int(floor_sig(s['reviews'])):,}+ reviews"),
         "youtube_views": f"{s['youtube_views'] // 1000}K",
         "youtube_likes": f"{s['youtube_likes'] // 1000}K likes",
     }
@@ -176,7 +229,9 @@ def main():
 
     stats = {"fetched_at": dt.datetime.now().isoformat(timespec="seconds")}
     stats.update(github_stats())
-    stats.update(itunes_rating())
+    token = make_token(os.path.join(resume_dir, cfg["asc_key_file"]),
+                       cfg["asc_key_id"], cfg["asc_issuer_id"])
+    stats.update(itunes_rating(token))
     stats.update(youtube_views(yt_key))
     stats.update(asc_ios_users(cfg, resume_dir))
     print(json.dumps({"raw": stats, "display": display(stats)}, indent=2))
