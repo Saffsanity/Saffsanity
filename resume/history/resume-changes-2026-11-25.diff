@@ -1,0 +1,15 @@
+# 2026-11-26 scheduled run. Backup: history/NoahSafferResume_2026-11-25.tex
+# raw: stars 5120, contributors 46, mac_downloads 47519, rating 4.90662 (257 ratings worldwide), youtube 870207 views / 18977 likes (2 videos), ios_users 40364 (through 2026-11-24)
+--- history/NoahSafferResume_2026-11-25.tex	2026-11-25 14:13:51
++++ NoahSafferResume.tex	2026-11-26 14:13:45
+@@ -152,8 +152,8 @@
+ \begin{tightitemize}
+ \item Designed and shipped a free, open-source (Apache 2.0) app that streams any window from a Mac to iPhone and iPad, with touch, trackpad, keyboard and Apple Pencil input and iPhone Duo layouts: Swift on macOS and iOS, ScreenCaptureKit capture, hardware HEVC encoding, TLS-paired local and remote transport, no servers and no accounts
+ \item Launch: \#1 Mac Streaming app on the App Store and \#2 on Hacker News
+-\item 4.92 stars on the App Store (253 reviews), 869K channel views (18K likes), 39K+ iOS users and 47K+ Mac downloads
+-\item 5,100+ GitHub stars and 45 community contributors submitting new features, ideas, bug fixes; Android, Windows, Linux and visionOS clients. CI and mutation-tested checks on every pull request, tag-triggered releases, TestFlight and App Store uploads from the command line
++\item 4.90 stars on the App Store (257 reviews), 870K channel views (18K likes), 40K+ iOS users and 47K+ Mac downloads
++\item 5,100+ GitHub stars and 46 community contributors submitting new features, ideas, bug fixes; Android, Windows, Linux and visionOS clients. CI and mutation-tested checks on every pull request, tag-triggered releases, TestFlight and App Store uploads from the command line
+ \item Built end to end utilizing Claude Code, from the first encoder latency harness to video production and App Store review
+ \end{tightitemize}
+ \vspace{\topsep}
